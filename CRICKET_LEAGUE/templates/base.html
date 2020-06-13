@@ -29,13 +29,15 @@
   <nav class="navbar navbar-default techfont custom-navbar">
     <div class="container">
 
-
       <ul class="nav navbar-nav">
         {% comment %} <li><a class='navbar-brand bigbrand' href="{% url 'post_list' %}">My Tech blog</a></li>
         <li><a href="{% url 'about'%}">About</a></li> {% endcomment %}
-        <li><a href="https://www.github.com">Github</a></li>
-        <li><a href="https://www.linkedin.com">LinkedIn</a></li>
-
+        <li><a href="{% url 'GroupList' %}">Groups</a></li>
+        <li><a href="{% url 'FixtureList' %}">Fixtures</a></li>
+        <li><a href="{% url 'MatchList' %}">Matches</a></li>
+        <li><a href="{% url 'TeamList' %}">Teams</a></li>
+        <li><a href="{% url 'PlayerList' %}">Player</a></li>
+        <li><a href="#" >Point Table</a></li>
       </ul>
   </div>
 </nav>

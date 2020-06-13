@@ -6,8 +6,9 @@ from manage_teams.models import Team
 class Point(models.Model):
     identifier = models.AutoField(primary_key=True)
     winner = models.ForeignKey(Team,on_delete=models.CASCADE,related_name='winner',blank=False,null=True)
-    winner_point = models.IntegerField()
-    loser_point = models.IntegerField()
+    winner_point = models.IntegerField(default=3)
+    loser_point = models.IntegerField(default=0)
+    match_suspended = models.IntegerField(default=1)
 
 class Match(models.Model):
     identifier = models.AutoField(primary_key=True)

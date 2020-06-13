@@ -11,4 +11,6 @@ class Player(models.Model):
     team = models.ForeignKey(Team,on_delete=models.CASCADE,blank=True,null=True)
     #Player history (matches, run, highest scores, fifties, hundreds)
 
+    def __str__(self):
+        return self.first_name + " " + self.last_name 
 

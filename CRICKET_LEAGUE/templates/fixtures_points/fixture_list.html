@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-        {% for match in match_list %} 
+        {% for fixture in fixture_list %} 
                 <div class="card" style="width: 18rem;">
                         <div class="card-body">
-                        <h5 class="card-title">{{ fixture.team1 }}</h5>
-                        <p class="card-text">  {{ fixture.team2 }} </p>
+                        <p class="card-title">{{ fixture.team1.name }}</p>
+                        <p class="card-text">  {{ fixture.team2.name }} </p>
                         <a href="{% url 'FixtureDetail'  fixture.identifier %}" class="btn btn-primary">Detail</a>
+                        <a href="{% url 'FixtureDelete'  fixture.identifier %}" class="btn btn-primary">Delete</a>
                 </div>
         {% endfor %}
         

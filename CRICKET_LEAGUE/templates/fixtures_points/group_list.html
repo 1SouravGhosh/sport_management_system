@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        {% for group in group_list %} 
+                <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                        <p class="card-text">  {{ group.name }} </p>
+                        <a href="{% url 'GroupUpdate'  group.identifier %}" class="btn btn-primary">Update</a>
+                        <a href="{% url 'GroupDelete'  group.identifier %}" class="btn btn-primary">Delete</a>
+                </div>
+        {% endfor %}
+{% endblock %}
