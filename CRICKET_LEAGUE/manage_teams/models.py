@@ -6,7 +6,6 @@ class Team(models.Model):
     name = models.CharField(max_length=255)
     logo_uri = models.ImageField(upload_to='media')
     state = models.CharField(max_length=20)
-    #Player history (matches, run, highest scores, fifties, hundreds)
 
     def __str__(self):
         return self.name
