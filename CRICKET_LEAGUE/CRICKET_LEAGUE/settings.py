@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'manage_players',
-    'manage_teams'
+    'manage_teams',
+    'manage_matches',
 ]
 
 MIDDLEWARE = [

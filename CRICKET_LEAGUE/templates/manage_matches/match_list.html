@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        {% for match in match_list %} 
+                <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                        <h5 class="card-title">{{ match.team1 }}</h5>
+                        <p class="card-text">  {{ match.team2 }} </p>
+                        <a href="{% url 'MatchDetail'  match.identifier %}" class="btn btn-primary">Detail</a>
+                </div>
+        {% endfor %}
+        
+{% endblock %}

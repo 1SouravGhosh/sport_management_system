@@ -1,24 +1,24 @@
 from django.shortcuts import render,reverse
 from django.urls import reverse_lazy
-from .models import Player
-from .forms import PlayerDetailForm
+from .models import Match
+# from .forms import MatchDetailForm
 from django.views.generic import (TemplateView,ListView,
                                   DetailView,CreateView,
                                   UpdateView,DeleteView)
 
-class PlayerCreateView(CreateView):
-    model = Player
-    form_class = PlayerDetailForm
-    template_name = 'manage_players/player_create_update.html'
+# class MatchCreateView(CreateView):
+#     model = Match
+#     form_class = MatchDetailForm
+#     template_name = 'manage_matches/match_create_update.html'
 
-    def get_success_url(self):
-        return reverse('PlayerList')
+#     def get_success_url(self):
+#         return reverse('MatchList')
 
-class PlayerListView(ListView):
-    model = Player
-    template_name = 'manage_players/player_list.html'
+class MatchListView(ListView):
+    model = Match
+    template_name = 'manage_matches/match_list.html'
 
-class PlayerDetailView(DetailView):
-    model = Player
-    template_name = 'manage_players/player_detail.html'
+class MatchDetailView(DetailView):
+    model = Match
+    template_name = 'manage_matches/match_detail.html'
 

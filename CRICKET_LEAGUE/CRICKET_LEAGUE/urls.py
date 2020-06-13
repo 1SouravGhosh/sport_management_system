@@ -23,4 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('players/', include('manage_players.urls')),
     path('teams/', include('manage_teams.urls')),
+    path('matches/', include('manage_matches.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
