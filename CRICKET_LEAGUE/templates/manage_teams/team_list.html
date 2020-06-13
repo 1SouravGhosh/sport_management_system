@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        {% for team in team_list %} 
+                <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                        <h5 class="card-title">{{ team.name }}</h5>
+                        <p class="card-text">  {{ team.state }} </p>
+                        <a href="{% url 'TeamDetail'  team.identifier %}" class="btn btn-primary">Detail</a>
+                        <a href="{% url 'TeamDelete'  team.identifier %}" class="btn btn-primary">Delete</a>
+                </div>
+        {% endfor %}
+        
+{% endblock %}

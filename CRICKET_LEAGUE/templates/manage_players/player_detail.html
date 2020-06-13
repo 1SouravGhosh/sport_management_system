@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <h1 class='posttitle loader'>{{ player.first_name }}</h1>
+        <h1 class='posttitle loader'>{{ player.last_name }}</h1>
+        <h1 class='posttitle loader'>{{ player.jersey_number }}</h1>
+        <h1 class='posttitle loader'>{{ player.country }}</h1>
+        <img src={{ player.image_uri.url }}  width="50" height="60">
+        <a href="{% url 'PlayerUpdate'  player.identifier %}" class="btn btn-primary">Update</a>
+{% endblock %}
