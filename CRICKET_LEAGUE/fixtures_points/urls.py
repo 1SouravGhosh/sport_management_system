@@ -3,9 +3,9 @@ from django.urls import path,include
 from . import views
 
 urlpatterns = [
-    path('create', views.PlayerCreateView.as_view(),name='PlayerCreate'),
-    path('update/<int:pk>', views.PlayerUpdateView.as_view(),name='PlayerUpdate'),
-    path('<int:pk>', views.PlayerDetailView.as_view(),name='PlayerDetail'),
-    path('delete/<int:pk>', views.PlayerDeleteView.as_view(),name='PlayerDelete'),
-    path('list', views.PlayerListView.as_view(),name='PlayerList'), 
+    path('create', views.FixtureCreateView.as_view(),name='FixtureCreate'),
+    path('update/<int:pk>', views.FixtureUpdateView.as_view(),name='FixtureUpdate'),
+    path('<int:pk>', views.FixtureDetailView.as_view(),name='FixtureDetail'),
+    path('delete/<int:pk>', views.FixtureDeleteView.as_view(),name='FixtureDelete'),
+    path('list', views.FixtureListView.as_view(),name='FixtureList'), 
 ]

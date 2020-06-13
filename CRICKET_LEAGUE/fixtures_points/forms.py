@@ -1,7 +1,13 @@
 from django import forms
-from .models import Fixture
+from .models import Fixture,Group
 
-class TeamDetailForm(forms.ModelForm):
+
+class FixtureDetailForm(forms.ModelForm):
     class Meta():
         model = Fixture
-        fields=['name','logo_uri','state']
+        fields=['team1','team2','date','group','completed']
+
+class GroupDetailForm(forms.ModelForm):
+    class Meta():
+        model = Group
+        fields=['name']

@@ -1,11 +1,22 @@
 from django.db import models
+# from manage_matches.models import Match
+from manage_teams.models import Team
+
+
+class Group(models.Model):
+    identifier = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=255)
 
 
 class Fixture(models.Model):
     identifier = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255)
-    logo_uri = models.ImageField(upload_to='media')
-    state = models.CharField(max_length=20)
-    #Player history (matches, run, highest scores, fifties, hundreds)
+    team1 = models.ForeignKey(Team,on_delete=models.CASCADE,related_name='team1',blank=False,null=True)
+    team2 = models.ForeignKey(Team,on_delete=models.CASCADE,related_name='team2',blank=False,null=True)
+    date = models.DateField(auto_now=True)
+    group = models.ForeignKey(Group,on_delete=models.CASCADE,related_name='fixtures',blank=False,null=True)
+    completed = models.BooleanField(default=False)
+
+
+
 
 

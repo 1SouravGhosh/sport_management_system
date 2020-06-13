@@ -1,15 +1,21 @@
 from django.db import models
+from fixtures_points.models import Fixture 
+from manage_teams.models import Team 
 
+
+class Point(models.Model):
+    identifier = models.AutoField(primary_key=True)
+    winner = models.ForeignKey(Team,on_delete=models.CASCADE,related_name='winner',blank=False,null=True)
+    winner_point = models.IntegerField()
+    loser_point = models.IntegerField()
 
 class Match(models.Model):
     identifier = models.AutoField(primary_key=True)
-    date = models.DateField(auto_now=True)
-    team1 = models.CharField(max_length=255)
-    team2 = models.CharField(max_length=255)
-    winner = models.CharField(max_length=10)
-    team1_score = models.IntegerField()
-    team2_score = models.IntegerField()
-    #Player history (matches, run, highest scores, fifties, hundreds)
+    fixture = models.OneToOneField(Fixture, on_delete=models.CASCADE,blank=True,null=True)
+    point = models.OneToOneField(Point, on_delete=models.CASCADE,blank=True,null=True)
 
 
+
+
+    
 

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'manage_players',
     'manage_teams',
     'manage_matches',
+    'fixtures_points',
 ]
 
 MIDDLEWARE = [
