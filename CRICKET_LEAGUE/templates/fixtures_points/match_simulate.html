@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+    {% if fixture.completed %}
+        <h1>Match already completed</h1>
+        <p class='posttitle loader'>{{ fixture.team1.name }}</p>
+        <p class='posttitle loader'>{{ fixture.team2.name }}</p>
+        <p class='posttitle loader'>{{ fixture.date }}</p>
+    {% else %}
+        <h1>Simulate Match</h1>
+        <form method="POST" enctype="multipart/form-data" class="post-form">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="save btn btn-default">Simulate</button>
+        </form>
+    {% endif %}
+
+    <script>var editor = new MediumEditor('.editable');</script>
+
+{% endblock %}

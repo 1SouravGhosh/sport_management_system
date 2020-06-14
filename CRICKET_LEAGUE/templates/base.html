@@ -15,14 +15,50 @@
 
 
         {# Custom CSS#}
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        {% comment %} <link rel="stylesheet" href="{% static 'css/blog.css' %}"> {% endcomment %}
 
         {# Fonts#}
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Russo+One" rel="stylesheet">
-
-
-
-
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    </head>
+<style type="text/css">
+.card{
+    display: inline-block;
+    border: 1px solid #cacaca;
+    border-radius: 4px;
+    padding: 10px;
+    margin-right: 15px;
+}
+.fa{
+  margin-right: 7px;
+}
+.flex-set{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+img{
+  width: 100%;
+}
+.fixture-top{
+  padding: 10px;
+  background-color: #fafafa;
+  margin-bottom: 10px;
+}
+.img-fixture{
+  width: 100px;
+    height: 100px;
+    overflow: hidden;
+    display: inline-block;
+    border: 1px solid #cacaca;
+}
+.fa-arrow-up {
+  color: green;
+}
+.fa-arrow-down {
+  color: red;
+}
+</style>
 
 <body class='loader'>
 
@@ -32,20 +68,19 @@
       <ul class="nav navbar-nav">
         {% comment %} <li><a class='navbar-brand bigbrand' href="{% url 'post_list' %}">My Tech blog</a></li>
         <li><a href="{% url 'about'%}">About</a></li> {% endcomment %}
+        <li><a href="{% url 'PlayerList' %}">Player</a></li>
+        <li><a href="{% url 'TeamList' %}">Teams</a></li>
         <li><a href="{% url 'GroupList' %}">Groups</a></li>
         <li><a href="{% url 'FixtureList' %}">Fixtures</a></li>
-        <li><a href="{% url 'MatchList' %}">Matches</a></li>
-        <li><a href="{% url 'TeamList' %}">Teams</a></li>
-        <li><a href="{% url 'PlayerList' %}">Player</a></li>
-        <li><a href="#" >Point Table</a></li>
+        <li><a href="{% url 'MatchList' %}">Matches</a></li>       
+        <li><a href="{% url 'Pointlist' %}" >Point Table</a></li>
       </ul>
   </div>
 </nav>
-
   {# The actual blog posts#}
         <div class="content container">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-xs-12">
                   <div class="blog_posts">
                     {% block content %}
                     {% endblock %}
@@ -58,7 +93,7 @@
 
 {# SCRIPTS#}
 
-<script type="text/javascript" src="{% static 'js/blog.js' %}"></script>
+{% comment %} <script type="text/javascript" src="{% static 'js/blog.js' %}"></script> {% endcomment %}
 
 </body>
 </html>

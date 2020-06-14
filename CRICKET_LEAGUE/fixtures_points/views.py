@@ -83,10 +83,11 @@ class FixtureDeleteView(DeleteView):
 
 
 ######################################################################
+######################################################################
 class MatchSimulateView(UpdateView):
     model = Fixture
     form_class = FixtureDetailForm
-    template_name = 'fixtures_points/fixture_create_update.html'
+    template_name = 'fixtures_points/match_simulate.html'
     
     def choose_random_winner(self):
         self.match_id = 0
