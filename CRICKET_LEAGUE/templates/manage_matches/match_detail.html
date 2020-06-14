@@ -1,8 +1,60 @@
 {% extends 'base.html' %}
 
 {% block content %}
-        <p class='posttitle loader'>{{ match.fixture.team1.name }}</p>
-        <p class='posttitle loader'>{{ match.fixture.team2.name }}</p>
-        <p class='posttitle loader'>{{ match.point.winner.name }}</p>
-        <p class='posttitle loader'>{{ match.point.winner_point }}</p>
+        <div class="card" style="width:100%; margin-bottom:15px;">
+                        <div class="card-body">
+                                <div class="card-title flex-set fixture-top">
+                                        <div class="flex-set" style="margin-right:25px;">
+                                                <div class="img-circle img-fixture">
+                                                        <img src={{match.fixture.team1.logo_uri.url}} />
+                                                </div>
+                                                <div class="card" style="width:80%; margin-left:20px;border: 0px;">
+                                                        <div class="card-body">
+                                                                <div class="card-title flex-set fixture-top">
+                                                                        <div class="flex-set" style="margin-left:10px;">
+                                                                                <h2 style="margin-left:10px;font-weight:bold;">{{ match.fixture.team1.name }}</h2>                                                                                          
+                                                                        </div>
+                                                                </div>
+                                                                <div class="card-button flex-set" style="justify-content: space-around;"> 
+                                                                                {% if match.point.winner.identifier == match.fixture.team1.identifier %}
+                                                                                        <button type="button" class="btn btn-success">Winner</button>
+                                                                                        <h4 style="margin-left:10px;font-weight:normal;">{{ match.point.winner_point }} points  <i class="fa fa-arrow-up" aria-hidden="true"></i></h4>
+                                                                                {% else %}
+                                                                                        <button type="button" class="btn btn-danger">Loser</button>
+                                                                                        <h4 style="margin-left:10px;font-weight:normal;">{{ match.point.loser_point }} point  <i class="fa fa-arrow-down" aria-hidden="true"></i> </h4>
+                                                                                {% endif %}
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                        </div> 
+                                        <h4><i>VS</i></h4>
+                                        <div class="flex-set" style="margin-left:25px;">
+                                                <div class="img-circle img-fixture">
+                                                        <img src={{match.fixture.team2.logo_uri.url}} />
+                                                </div>                                                                                               
+                                                <div class="card" style="width:80%; margin-left:20px;border: 0px;">
+                                                        <div class="card-body">
+                                                                <div class="card-title flex-set fixture-top">
+                                                                        <div class="flex-set" style="margin-left:10px;">
+                                                                                <h2 style="margin-left:10px;font-weight:bold;">{{ match.fixture.team2.name }}</h2>                                                                                          
+                                                                        </div>
+                                                                </div>
+                                                                <div class="card-button flex-set" style="justify-content: space-around;"> 
+                                                                                {% if match.point.winner.identifier == match.fixture.team2.identifier %}
+                                                                                        <button type="button" class="btn btn-success">Winner</button>
+                                                                                        <h4 style="margin-left:10px;font-weight:normal;">{{ match.point.winner_point }} points  <i class="fa fa-arrow-up" aria-hidden="true"></i></h4>
+                                                                                {% else %}
+                                                                                        <button type="button" class="btn btn-danger">Loser</button>
+                                                                                        <h4 style="margin-left:10px;font-weight:normal;">{{ match.point.loser_point }} point  <i class="fa fa-arrow-down" aria-hidden="true"></i> </h4>
+                                                                                {% endif %}
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="card-button flex-set" style="justify-content: center;"> 
+                                        <h3 style="margin-left:10px;font-weight:bold;">Match date: {{ match.fixture.date }}</h3>
+                                </div>
+                        </div>
+                </div>
 {% endblock %}

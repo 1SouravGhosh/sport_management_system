@@ -41,7 +41,11 @@ INSTALLED_APPS = [
     'manage_teams',
     'manage_matches',
     'fixtures_points',
+    'manager_users',
+    'crispy_forms',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -126,3 +130,6 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+LOGIN_REDIRECT_URL = 'MatchList'
+LOGIN_URL = 'login'

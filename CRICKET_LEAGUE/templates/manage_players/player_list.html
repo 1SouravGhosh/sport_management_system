@@ -17,12 +17,21 @@
                                         <div class="flex-set" style="margin-right:25px;">
                                                 <div class="img-circle img-fixture">
                                                         <img src={{player.image_uri.url}} />
-                                                </div>
-                                                <h2 style="margin-left:10px;font-weight:bold;">{{ match.fixture.team1.name }}</h2>
-                                        </div> 
-                                                <h2 style="margin-left:10px;font-weight:bold;">{{ player.first_name }} {{ player.last_name }}</h2>
-												<p class="card-text">  {{ player.team.name }} </p>
-                                        </div>
+                                                </div>   
+                                                <ul style="list-style-type:none;">
+                                                        <li>
+                                                                <h2 style="margin-left:0px;font-weight:bold;">{{ player.first_name }} {{ player.last_name }}</h2>
+                                                        </li>
+                                                        <li>
+                                                                <p class="card-text">Team: {{ player.team.name }} </p>
+                                                        </li>
+                                                        <li>
+                                                                 <p class="card-text">Jersey: {{ player.jersey_number }} </p>
+                                                        </li>
+                                                        <li>
+                                                                 <p class="card-text">Country: {{ player.country }} </p>
+                                                        </li>
+                                                </ul>                                             
                                 </div>
                                 <div class="card-button flex-set" style="justify-content: center;"> 
                                         <a href="{% url 'PlayerDetail'  player.identifier %}" class="btn btn-primary" style="margin-right:15px;"><i class="fa fa-pencil"></i>Detail</a>

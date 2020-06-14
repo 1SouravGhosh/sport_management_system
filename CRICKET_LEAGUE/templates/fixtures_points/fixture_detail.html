@@ -1,9 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
-        <p class='posttitle loader'>{{ fixture.team1.name }}</p>
-        <p class='posttitle loader'>{{ fixture.team2.name }}</p>
-        <p class='posttitle loader'>{{ fixture.date }}</p>
-        <a href="{% url 'FixtureUpdate'  fixture.identifier %}" class="btn btn-primary">Update</a>
-        <a href="{% url 'SimulateMatch'  fixture.identifier %}" class="btn btn-primary">Simulate Match</a>
+        <div class="card" style="width:100%; margin-bottom:15px;">
+                        <div class="card-body">
+                                <div class="card-title flex-set fixture-top">
+                                        <div class="flex-set" style="margin-right:25px;">
+                                                <div class="img-circle img-fixture">
+                                                        <img src={{fixture.team1.logo_uri.url}} />
+                                                </div>
+                                                <h2 style="margin-left:10px;font-weight:bold;">{{ fixture.team1.name }}</h2>
+                                        </div> 
+                                        <h4><i>VS</i></h4>
+                                        <div class="flex-set" style="margin-left:25px;">
+                                                <div class="img-circle img-fixture">
+                                                        <img src={{fixture.team2.logo_uri.url}} />
+                                                </div>
+                                                <h2 style="margin-left:10px;font-weight:bold;">{{ fixture.team2.name }}</h2>
+                                        </div>
+                                </div>
+                                <div class="card-button flex-set" style="justify-content: center;"> 
+                                  <a href="{% url 'FixtureUpdate'  fixture.identifier %}" class="btn btn-primary">Update</a>
+                                  <a href="{% url 'SimulateMatch'  fixture.identifier %}" class="btn btn-primary">Simulate Match</a>
+                                </div>
+                        </div>
+                </div>
 {% endblock %}

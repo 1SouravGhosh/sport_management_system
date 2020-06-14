@@ -1,6 +1,7 @@
 from django.db import models
 from manage_teams.models import Team
 
+
 class Player(models.Model):
     identifier = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=255)

@@ -66,14 +66,20 @@ img{
     <div class="container">
 
       <ul class="nav navbar-nav">
-        {% comment %} <li><a class='navbar-brand bigbrand' href="{% url 'post_list' %}">My Tech blog</a></li>
-        <li><a href="{% url 'about'%}">About</a></li> {% endcomment %}
-        <li><a href="{% url 'PlayerList' %}">Player</a></li>
-        <li><a href="{% url 'TeamList' %}">Teams</a></li>
-        <li><a href="{% url 'GroupList' %}">Groups</a></li>
-        <li><a href="{% url 'FixtureList' %}">Fixtures</a></li>
-        <li><a href="{% url 'MatchList' %}">Matches</a></li>       
-        <li><a href="{% url 'Pointlist' %}" >Point Table</a></li>
+        {% if user.is_authenticated %}
+                <li><a href="{% url 'PlayerList' %}">Player</a></li>
+                <li><a href="{% url 'TeamList' %}">Teams</a></li>
+                <li><a href="{% url 'GroupList' %}">Groups</a></li>
+                <li><a href="{% url 'FixtureList' %}">Fixtures</a></li>
+        {% else %}
+                <li><a class="nav-item nav-link" href="{% url 'login' %}">Login</a></li>
+                <li><a class="nav-item nav-link" href="{% url 'register' %}">Register</a></li>
+        {% endif %}
+                <li><a href="{% url 'MatchList' %}">Matches</a></li>       
+                <li><a href="{% url 'Pointlist' %}" >Point Table</a></li>
+        {% if user.is_authenticated %}
+                <li style="padding-left:20em"><a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a></li>
+        {% endif %}
       </ul>
   </div>
 </nav>

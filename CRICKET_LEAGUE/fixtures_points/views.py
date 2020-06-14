@@ -9,9 +9,10 @@ from django.views.generic import (TemplateView,ListView,
 import random
 from manage_matches.models import Point,Match
 import manage_matches.urls
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class GroupCreateView(CreateView):
+class GroupCreateView(LoginRequiredMixin,CreateView):
     model = Group
     form_class = GroupDetailForm
     template_name = 'fixtures_points/group_create_update.html'
@@ -20,7 +21,7 @@ class GroupCreateView(CreateView):
         return reverse('GroupList')
 
 
-class GroupUpdateView(UpdateView):
+class GroupUpdateView(LoginRequiredMixin,UpdateView):
     model = Group
     form_class = GroupDetailForm
     template_name = 'fixtures_points/group_create_update.html'
@@ -29,7 +30,7 @@ class GroupUpdateView(UpdateView):
         return reverse('GroupList')
 
 
-class GroupListView(ListView):
+class GroupListView(LoginRequiredMixin,ListView):
     model = Group
     template_name = 'fixtures_points/group_list.html'
 
@@ -38,7 +39,7 @@ class GroupListView(ListView):
 #     template_name = 'fixtures_points/group_detail.html'
 
 
-class GroupDeleteView(DeleteView):
+class GroupDeleteView(LoginRequiredMixin,DeleteView):
     model = Group
     
     def get_success_url(self):
@@ -48,7 +49,7 @@ class GroupDeleteView(DeleteView):
 
 ##############################################################################
 
-class FixtureCreateView(CreateView):
+class FixtureCreateView(LoginRequiredMixin,CreateView):
     model = Fixture
     form_class = FixtureDetailForm
     template_name = 'fixtures_points/fixture_create_update.html'
@@ -57,7 +58,7 @@ class FixtureCreateView(CreateView):
         return reverse('FixtureList')
 
 
-class FixtureUpdateView(UpdateView):
+class FixtureUpdateView(LoginRequiredMixin,UpdateView):
     model = Fixture
     form_class = FixtureDetailForm
     template_name = 'fixtures_points/fixture_create_update.html'
@@ -66,16 +67,16 @@ class FixtureUpdateView(UpdateView):
         return reverse('FixtureList')
 
 
-class FixtureListView(ListView):
+class FixtureListView(LoginRequiredMixin,ListView):
     model = Fixture
     template_name = 'fixtures_points/fixture_list.html'
 
-class FixtureDetailView(DetailView):
+class FixtureDetailView(LoginRequiredMixin,DetailView):
      model = Fixture
      template_name = 'fixtures_points/fixture_detail.html'
 
 
-class FixtureDeleteView(DeleteView):
+class FixtureDeleteView(LoginRequiredMixin,DeleteView):
     model = Fixture
     
     def get_success_url(self):
@@ -84,7 +85,7 @@ class FixtureDeleteView(DeleteView):
 
 ######################################################################
 ######################################################################
-class MatchSimulateView(UpdateView):
+class MatchSimulateView(LoginRequiredMixin,UpdateView):
     model = Fixture
     form_class = FixtureDetailForm
     template_name = 'fixtures_points/match_simulate.html'
@@ -106,7 +107,7 @@ class MatchSimulateView(UpdateView):
             match = Match.objects.filter(fixture__identifier=query_set[0].identifier)
             print(match)
             self.match_id = match[0].identifier
-
+    
     def get_success_url(self):
         self.choose_random_winner()
         return reverse('MatchDetail',kwargs={'pk': self.match_id})

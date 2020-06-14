@@ -1,4 +1,4 @@
-from django.shortcuts import render,reverse
+from django.shortcuts import render,reverse,redirect
 from django.urls import reverse_lazy
 from .models import Match,Point
 # from .forms import MatchDetailForm
@@ -8,13 +8,6 @@ from django.views.generic import (TemplateView,ListView,
 from django.db.models import Sum
 from manage_matches.models import Team
 
-# class MatchCreateView(CreateView):
-#     model = Match
-#     form_class = MatchDetailForm
-#     template_name = 'manage_matches/match_create_update.html'
-
-#     def get_success_url(self):
-#         return reverse('MatchList')
 
 class MatchListView(ListView):
     model = Match
@@ -36,3 +29,6 @@ class PointListView(ListView):
         
     template_name = 'manage_matches/point_list.html'
 
+
+def home(request):
+    return redirect('MatchList')

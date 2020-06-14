@@ -5,8 +5,9 @@ from .forms import PlayerDetailForm
 from django.views.generic import (TemplateView,ListView,
                                   DetailView,CreateView,
                                   UpdateView,DeleteView)
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class PlayerCreateView(CreateView):
+class PlayerCreateView(LoginRequiredMixin,CreateView):
     model = Player
     form_class = PlayerDetailForm
     template_name = 'manage_players/player_create_update.html'
@@ -15,7 +16,7 @@ class PlayerCreateView(CreateView):
         return reverse('PlayerList')
 
 
-class PlayerUpdateView(UpdateView):
+class PlayerUpdateView(LoginRequiredMixin,UpdateView):
     model = Player
     form_class = PlayerDetailForm
     template_name = 'manage_players/player_create_update.html'
@@ -24,16 +25,16 @@ class PlayerUpdateView(UpdateView):
         return reverse('PlayerDetail',kwargs={'pk': self.object.identifier})
 
 
-class PlayerListView(ListView):
+class PlayerListView(LoginRequiredMixin,ListView):
     model = Player
     template_name = 'manage_players/player_list.html'
 
-class PlayerDetailView(DetailView):
+class PlayerDetailView(LoginRequiredMixin,DetailView):
     model = Player
     template_name = 'manage_players/player_detail.html'
 
 
-class PlayerDeleteView(DeleteView):
+class PlayerDeleteView(LoginRequiredMixin,DeleteView):
     model = Player
     def get_success_url(self):
         return reverse_lazy('PlayerList')
