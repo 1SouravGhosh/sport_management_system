@@ -6,6 +6,10 @@ from fixtures_points.models import Fixture
 from django.views.generic import (TemplateView,ListView,
                                   DetailView,CreateView,
                                   UpdateView,DeleteView)
+import random
+from manage_matches.models import Point,Match
+import manage_matches.urls
+
 
 class GroupCreateView(CreateView):
     model = Group
@@ -78,5 +82,31 @@ class FixtureDeleteView(DeleteView):
         return reverse_lazy('FixtureList')
 
 
+######################################################################
+class MatchSimulateView(UpdateView):
+    model = Fixture
+    form_class = FixtureDetailForm
+    template_name = 'fixtures_points/fixture_create_update.html'
+    
+    def choose_random_winner(self):
+        self.match_id = 0
+        query_set= Fixture.objects.filter(identifier=self.object.identifier)
+        if query_set[0].completed:
+            print("creating match")
+            ls= [query_set[0].team1 ,query_set[0].team2]
+            winner_team=random.choice(ls)
+            point = Point.create(team=winner_team)
+            match = Match.create(fixture=self.object,point=point)
+            point.save()
+            match.save()
+            self.match_id = match.identifier
+        else:
+            print(query_set[0].identifier)
+            match = Match.objects.filter(fixture__identifier=query_set[0].identifier)
+            print(match)
+            self.match_id = match[0].identifier
 
+    def get_success_url(self):
+        self.choose_random_winner()
+        return reverse('MatchDetail',kwargs={'pk': self.match_id})
 

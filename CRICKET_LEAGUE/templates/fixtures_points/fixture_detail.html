@@ -5,4 +5,5 @@
         <p class='posttitle loader'>{{ fixture.team2.name }}</p>
         <p class='posttitle loader'>{{ fixture.date }}</p>
         <a href="{% url 'FixtureUpdate'  fixture.identifier %}" class="btn btn-primary">Update</a>
+        <a href="{% url 'SimulateMatch'  fixture.identifier %}" class="btn btn-primary">Simulate Match</a>
 {% endblock %}

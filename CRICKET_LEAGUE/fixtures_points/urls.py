@@ -7,7 +7,7 @@ urlpatterns = [
     path('group/update/<int:pk>', views.GroupUpdateView.as_view(),name='GroupUpdate'),
     path('group/delete/<int:pk>', views.GroupDeleteView.as_view(),name='GroupDelete'),
     path('group/list', views.GroupListView.as_view(),name='GroupList'), 
-    
+    path('simulate/<int:pk>', views.MatchSimulateView.as_view(),name='SimulateMatch'), 
     path('create', views.FixtureCreateView.as_view(),name='FixtureCreate'),
     path('update/<int:pk>', views.FixtureUpdateView.as_view(),name='FixtureUpdate'),
     path('<int:pk>', views.FixtureDetailView.as_view(),name='FixtureDetail'),

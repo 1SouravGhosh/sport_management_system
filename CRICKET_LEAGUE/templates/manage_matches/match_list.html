@@ -4,8 +4,12 @@
         {% for match in match_list %} 
                 <div class="card" style="width: 18rem;">
                         <div class="card-body">
-                        <h5 class="card-title">{{ match.team1 }}</h5>
-                        <p class="card-text">  {{ match.team2 }} </p>
+                        <h5 class="card-title">{{ match.fixture.team1 }}</h5>
+                        <p class="card-text">  {{ match.fixture.team2 }} </p>
+                        <p class="card-text">  {{ match.fixture.date }} </p>
+                        <p class="card-text">  {{ match.point.winner }} </p>
+                        <p class="card-text">  {{ match.point.winner_point }} </p>
+                        <p class="card-text">  {{ match.point.loser_point }} </p>
                         <a href="{% url 'MatchDetail'  match.identifier %}" class="btn btn-primary">Detail</a>
                 </div>
         {% endfor %}
